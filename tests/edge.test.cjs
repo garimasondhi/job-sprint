@@ -13,6 +13,10 @@ test('Preflight from the GitHub Pages site gets CORS headers and no body', async
   assert.match(res.headers.get('access-control-allow-headers'), /content-type/);
 });
 
+test('Garima\'s GitHub Pages site is allowed too', () => {
+  assert.equal(corsHeaders('https://garimasondhi.github.io')['Access-Control-Allow-Origin'], 'https://garimasondhi.github.io');
+});
+
 test('Other websites are not allowed to read responses', () => {
   assert.equal(corsHeaders('https://evil.example')['Access-Control-Allow-Origin'], 'https://arora-72.github.io');
   assert.equal(corsHeaders('http://localhost:8080')['Access-Control-Allow-Origin'], 'http://localhost:8080');

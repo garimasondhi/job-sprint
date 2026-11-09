@@ -1,6 +1,6 @@
 // Turns a Supabase Edge Function request into the same { httpMethod, headers, body } event the
 // handlers were written for, and adds CORS so the GitHub Pages site can call it.
-const ALLOWED_ORIGINS = ['https://arora-72.github.io'];
+const ALLOWED_ORIGINS = ['https://arora-72.github.io', 'https://garimasondhi.github.io'];
 const LOCAL = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
 
 export function corsHeaders(origin) {
