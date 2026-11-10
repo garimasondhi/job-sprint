@@ -4,7 +4,7 @@ A shared, mobile-friendly job pipeline for Garima and Indresh.
 
 ## Current deployment
 
-- **Site:** https://arora-72.github.io/job-sprint/ (GitHub Pages). Every push to `main` that touches `public/` publishes automatically (`.github/workflows/pages.yml`).
+- **Site:** https://garimasondhi.github.io/job-sprint/ (GitHub Pages). Every push to `main` that touches `public/` publishes automatically (`.github/workflows/pages.yml`).
 - **Server code:** Supabase Edge Functions in `supabase/functions/` (`jobs`, `companies`, `discover`, `todos`, `parse-job`), served at `https://tuggvixzrgbqagqrrkey.supabase.co/functions/v1/<name>`. They use the project's own server key, which Supabase provides to functions automatically; no key is stored in this repository.
 - **Database:** the same Supabase project. The browser never reads tables directly; it only calls the functions.
 - The publishable key in `public/app.js` is meant to be public. It identifies the project and gives no table access.
