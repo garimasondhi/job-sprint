@@ -27,6 +27,7 @@ can view and change the shared jobs.
 - Every job has a running **notes** log (who and when for each note).
 - Uses a warm cream and clay theme, with a header button for dark mode. It follows the device setting until a choice is made, then remembers that choice in the browser.
 - No PDF upload or analytics graphs yet.
+- Usage tracking is anonymous (see CHANGELOG). Open the site with `?notrack` once per device to exclude yourself.
 
 ## Discover
 

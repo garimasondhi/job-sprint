@@ -1283,6 +1283,7 @@ function setView(tab, filter = null) {
   if (changed || filter) state.holdOnly = false;
   state.tab = tab;
   state.filter = filter;
+  if (changed) window.jsTrack?.('tab_opened', tab);
   render();
   if (changed) document.querySelector(`.tab[data-tab="${tab}"]`)?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   syncTabFade();
@@ -1323,6 +1324,7 @@ els.jobList.addEventListener('click', async (event) => {
   try {
     if (button.dataset.discoverAction === 'add') {
       const result = await api('discover', { method: 'POST', body: JSON.stringify({ id, actor: state.user }) });
+      window.jsTrack?.('discover_added');
       if (result.job) state.jobs.unshift(result.job);
       state.discover = state.discover.filter((item) => item.id !== id);
       if (state.notesKind === 'discover' && state.notesJobId === id) closeNotes();
@@ -1330,6 +1332,7 @@ els.jobList.addEventListener('click', async (event) => {
       showToast(`Added: ${jobLabel(result.job)}`);
     } else {
       await api('discover', { method: 'PATCH', body: JSON.stringify({ id, actor: state.user }) });
+      window.jsTrack?.('discover_dismissed');
       state.discover = state.discover.filter((item) => item.id !== id);
       if (state.notesKind === 'discover' && state.notesJobId === id) closeNotes();
       showToast(`Dismissed: ${jobLabel(role)}`);
@@ -1394,6 +1397,7 @@ function mutate(id, local, body, coll = 'jobs') {
 }
 
 function setStatus(id, status, reason = '') {
+  if (status === 'applied' || status === 'blocked') window.jsTrack?.(`job_${status}`);
   return mutate(id, localPatch(status, reason), { action: 'status', status, blocked_reason: reason });
 }
 
@@ -2127,6 +2131,7 @@ async function saveJob() {
       method: 'POST',
       body: JSON.stringify({ company, title, location, url: state.preview.url, added_by: state.user }),
     });
+    window.jsTrack?.('job_added');
     if (res.job) state.jobs.unshift(res.job);
     closePanel();
     if (state.tab !== 'open' || state.filter === 'backlog') setView('open'); else render();
@@ -3908,6 +3913,7 @@ function noteDirty(id) { const ned = state.ned; return !!ned && (!id || ned.id =
 
 function newNote(kind = 'blank', link = null) {
   if (!state.user) { chooseUser(); return; }
+  window.jsTrack?.('note_created', kind);
   const tpl = NOTE_TEMPLATES.find(([k]) => k === kind);
   const now = new Date().toISOString();
   const label = state.noteFilter !== 'all' && state.noteFilter !== 'trash' ? [state.noteFilter] : [];
@@ -4403,6 +4409,7 @@ function setPalette(id) {
   if (!PALETTES.some((p) => p.id === id)) return;
   rootEl.setAttribute('data-palette', id);
   store.set('jobSprintPalette', id);
+  window.jsTrack?.('theme_changed', id);
   syncTheme();
 }
 function setMode(mode) {

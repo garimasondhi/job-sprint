@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#F4F2EC" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0E1015" media="(prefers-color-scheme: dark)" />
   <!-- GitHub Pages cannot send security headers, so the page sets its own rules. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-nbdMiaQ2lV6w2/uDcgEfXzgPKxKs2W5mHyCeciyax1k='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://tuggvixzrgbqagqrrkey.supabase.co http://localhost:8787; base-uri 'self'; form-action 'self'; object-src 'none'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-nbdMiaQ2lV6w2/uDcgEfXzgPKxKs2W5mHyCeciyax1k=' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.goatcounter.com; connect-src 'self' https://tuggvixzrgbqagqrrkey.supabase.co https://*.goatcounter.com http://localhost:8787; base-uri 'self'; form-action 'self'; object-src 'none'" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Job Sprint</title>
   <script>
@@ -420,6 +420,7 @@
     <span id="toastText"></span>
     <button id="toastUndo" class="toast-undo hidden">Undo</button>
   </div>
+  <script src="track.js" defer></script>
   <script src="app.js" defer></script>
 </body>
 </html>

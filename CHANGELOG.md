@@ -4,6 +4,14 @@ Changes to Job Sprint are recorded here. The initial Git snapshot is `v1.0.0`. E
 
 ## Unreleased
 
+### Visitor and feature-usage tracking
+
+- **Visitor traffic** goes to GoatCounter (free, no cookies, no banner): page views, unique visitors, referrers, countries and devices. It stays off until a site code is set in `public/track.js`.
+- **Feature usage** goes to a new `events` table through the `events` function: page open, tab opened, job added, applied, blocked, Discover added or dismissed, note created, theme changed. Events carry random ids only. No names, IPs or emails are stored. Only known event names are accepted.
+- **Your own visits are excluded.** Open the site once with `?notrack` on each device to switch tracking off for that browser (`?notrack=0` switches it back on). Local development, other hosts and browsers sending Do Not Track never count.
+- Tag a shared link with `?ref=application` to see how many visits came from it.
+- Database: new `events` table (`supabase/events.sql`) with ready-made summary queries. The page's Content-Security-Policy now allows GoatCounter.
+
 ### Five new colour themes
 
 - New **Mango**, **Lime**, **Ocean**, **Flamingo** and **Aurora** themes, each with a light and a dark version, plus a soft colour glow behind the page. The older themes are unchanged.
