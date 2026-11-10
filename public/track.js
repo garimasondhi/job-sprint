@@ -3,7 +3,7 @@
    Opt out on a device by opening the site once with ?notrack (undo with ?notrack=0). */
 (function (root) {
   'use strict';
-  var GOATCOUNTER_CODE = ''; // your GoatCounter site code, e.g. 'garima-jobsprint'. Empty keeps traffic counting off.
+  var GOATCOUNTER_CODE = 'sondhigarima'; // GoatCounter site code (sondhigarima.goatcounter.com). Empty keeps traffic counting off.
   var LIVE_HOSTS = ['garimasondhi.github.io'];
   var EVENTS_URL = 'https://tuggvixzrgbqagqrrkey.supabase.co/functions/v1/events';
   var API_KEY = 'sb_publishable_Pw46xIcwEZVThExD1uqqew_p2DUc6TT';
